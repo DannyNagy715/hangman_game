@@ -1,71 +1,16 @@
 #imorting random library
 import random
+import hangman_art
+import hangman_words
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+print(hangman_art.logo)
 lives = 6
 end_game = False
-word_list = ["ardwark", "baboon", "camel"]
 
 #random word generation
-chosen_word = random.choice(word_list)
-print(f"word is {chosen_word}")
+chosen_word = random.choice(hangman_words.word_list)
 
-
+print(hangman_art.stages[6])
 #filling up display list and printing the empty list
 word_length = len(chosen_word)
 display = []
@@ -86,7 +31,8 @@ while not end_game:
         
     if guess not in chosen_word:
         lives -= 1
-        print(stages[lives])
+        print(f"Your guess {guess} is not in the word. You lost a life :(")
+        print(hangman_art.stages[lives])
         if lives == 0:
             end_game = True
             print("You lost")
